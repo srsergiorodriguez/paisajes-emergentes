@@ -1,3 +1,5 @@
+$ = (query) => document.querySelector(query);
+
 // GPU
 const gpu = new GPU();
 
@@ -69,6 +71,11 @@ function setup() {
       else {this.html("Animar");clearInterval(epochinterval)}
     });
   },1);
+  let slidersarray = selectAll(".rangeslider").map(d=>d.elt);
+  let options = {start:[20,80],connect:true,range:{'min':0,'max':100}}
+  for (let i=0;i<slidersarray.length;i++) {
+    noUiSlider.create(slidersarray[i],options,true);
+  }
 }
 
 function rightMenu() {
@@ -90,6 +97,7 @@ function rightMenu() {
           sliders[i][j][k].input(function() {
             sliderChange(i,j,type);
           });
+          
         }
         const v1 = interval[i][j][0];
         const v2 = interval[i][j][1];
