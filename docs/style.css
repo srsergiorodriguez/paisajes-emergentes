@@ -53,6 +53,17 @@ button:focus {
   outline:none;
 }
 
+#tableros {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3em;
+  padding: 0 3em;
+}
+
+#tableros img {
+  width: 100%;
+}
+
 .outer_container {
   position: relative;
 }

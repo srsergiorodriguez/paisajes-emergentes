@@ -10,6 +10,7 @@
     <script src="nouislider.min.js"></script>
     <script src="gpu-browser.min.js"></script>
     <script src="p5.min.js"></script>
+    <script src="nh_explanation.js"></script>
     <script src="nh_interface.js"></script>
     <script src="interval_interface.js"></script>
   </head>
@@ -36,13 +37,21 @@
           <p>
             Primero piensa en un juego de mesa, digamos, el juego de damas o el ajedrez. Sabes que en esos juegos hay dos componentes principales: unas <strong><em>piezas</em></strong> —las fichas negras y blancas, los peones, la reina, etc...— y unas <strong><em>reglas</em></strong> —en damas las fichas solo pueden moverse en diagonal, en ajedrez cada tipo de ficha tiene ciertos movimientos válidos; además, unas fichas pueden comerse a otras, y así—. Adicionalmente, si aplicamos una sucesión de reglas válidas sobre las piezas obtenemos una partida de juego en la que podemos ganar o perder. Hasta ahí, todo claro.
           </p>
+          <div id="tableros">
+            <img src="ilustracion.png" alt=""/>
+            <img src="ilustracion1.png" alt=""/>
+            <img src="ilustracion2.png" alt=""/>
+          </div>
           <p>
             Pues bien, un <strong><em>autómata celular</em></strong> es muy parecido. Hay unas piezas en un tablero de juego, y esas piezas deben seguir unas reglas definidas anteriormente. Como sucede con los juegos, cada vez que aplicamos una regla todo el tablero cambia, el sistema se reconfigura. Si volvieramos a aplicar la misma regla en el nuevo estado del tablero, el sistema se reconfiguraría de nuevo.
           </p>
           <p>
-            Los autómatas celulares más comunes están compuestos por "fichas" o cuadros de dos posibilidades, representadas por dos colores -blancos o negros, verdes o azules, rojos o amarillos, en fin-, así que es muy parecido a las fichas de las damas o el ajedrez. 
+            Los autómatas celulares más comunes están compuestos por "fichas" o cuadros de dos posibilidades, representadas por dos colores -blancos o negros, verdes o azules, rojos o amarillos, en fin-, así que es muy parecido a las fichas de las damas o el ajedrez. Y están compuestos básicamente por dos reglas: un vecindario y una decisión de vida o muerte.
             Los autómatas celulares, en su forma más abstracta, son modelos matemáticos que exhiben comportamientos emergentes. Es decir, una vez definidas las reglas y el estado inicial, y luego de aplicar las reglas muchas veces, el tablero muestra, increíblemente, comportamientos muy complejos. Aquí hay un ejemplo, esto es un autómata celular de una dimensión, o sea, en un tablero que solo está compuesto por una
           </p>
+          <header class="content_header">
+            <h2>El vecindario</h2>
+          </header>
           <header class="content_header">
             <h1>¿y qué es un autómata celular compuesto?</h1>
           </header>
@@ -65,6 +74,7 @@
             Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
             fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
           </p>
+          <div id="nh_explanation" class="interface"></div>
         </section>
         <section id="nh" class="text">
           <header class="content_header">
