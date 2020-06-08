@@ -1,0 +1,159 @@
+body {
+  padding:0;
+  margin:0;
+  font-size: 1.2em;
+  font-family: 'Oxygen', sans-serif;
+  /* background: black;
+  color: white; */
+}
+
+button {
+  font-family:'Open Sans';
+  font-size:0.8em;
+  color:#111111;
+  background:white;
+  box-shadow:none;
+  border:solid 1px;
+  border-radius:5px;
+  margin:5px 0px;
+  padding: 5px;
+}
+
+button:hover {
+  color:white;
+  background:#111111;
+}
+
+button:active {
+  background:#666666;
+}
+
+button:focus {
+  outline:none;
+}
+
+#interval_advanced {
+  visibility: hidden;
+}
+
+#nh_advanced {
+  visibility: hidden;
+}
+
+.slider {
+  box-shadow:none;
+  -webkit-appearance: none;
+  -moz-appearance:none;
+  appearance: none;
+  color:#111111;
+  background:#111111;
+  height:2px;
+  /* position: absolute; */
+}
+
+.slider:focus {
+  outline:none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width:20px;
+  height:20px;
+  border-radius:5px;
+  border:solid 2px #111111;
+  background:white;
+  cursor:pointer;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background:#111111;
+}
+
+.double_slider_div {
+  position: relative;
+}
+
+#general {
+  min-width: 550px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 1em;
+}
+
+.general_header {
+  height: 50vw;
+}
+
+.general_header {
+  text-align: center;
+}
+
+.general_header h1 {
+  font-size: 2em;
+  font-weight: 700;
+  padding:1em 0em 0.3em 0em;
+  margin:0;
+}
+
+.general_header h2 {
+  font-weight: 400;
+  font-size: 1.1em;
+  padding:0;
+  margin:0;
+}
+
+#cover {
+  padding: 1em;
+}
+
+.content_header h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+  padding:1em 0em 0.3em 0em;
+  margin:0;
+}
+
+.content_header h2 {
+  font-weight: 400;
+  font-size: 1.1em;
+  padding:0;
+  margin:0;
+}
+
+#nh_cont {
+  border: solid 1px lightgrey;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#nh_controls {
+  padding: 1em;
+}
+
+#nh_canvas:hover {
+  cursor: crosshair;
+}
+
+#interval_cont {
+  border: solid 1px lightgrey;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#interval_left {
+  border: solid 1px lightgrey;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#interval_right {
+  border: solid 1px lightgrey;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

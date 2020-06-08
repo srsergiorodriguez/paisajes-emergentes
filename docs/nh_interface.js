@@ -11,12 +11,18 @@ const nh_interface = function(s) {
     cnv.parent('#nh_canvas');
     s.noStroke();
     const nhBtns = s.selectAll(".nh_btn");
-    const nhP = s.select("#nh_p");
+    for (let j=0;j<nhBtns.length;j++) {
+      nhBtns[j].removeClass("activebutton");
+    }
+    nhBtns[0].addClass("activebutton");
     for (let i=0;i<nhBtns.length;i++) {
       nh[i] = [];
       nhBtns[i].mousePressed(()=>{
         nhSelection=i;
-        nhP.html("Vecindario escogido: "+i);
+        for (let j=0;j<nhBtns.length;j++) {
+          nhBtns[j].removeClass("activebutton");
+        }
+        nhBtns[i].addClass("activebutton");
         s.displayCells();
       });
     }
@@ -28,7 +34,7 @@ const nh_interface = function(s) {
       const dtext = draw ? "Borrador" : "Lápiz";
       nhDrawEraseBtn.html(dtext);
     });
-    s.select("#nh_save").mouseClicked(s.saveNhs);
+    //s.select("#nh_save").mouseClicked(s.saveNhs);
   };
 
   s.createGrid = () => {

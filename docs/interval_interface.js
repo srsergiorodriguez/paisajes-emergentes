@@ -26,11 +26,37 @@ let intervalSlidersDeath = [];
 let intervalPDeath = [];
 
 // Intervals
-const intervalNum = 2; // number of intervals for each neighborhood
+const intervalNum = 1; // number of intervals for each neighborhood
 let intervalLife = [];
 let intervalDeath = [];
 
-intnh = [[[0,-1],[1,0],[0,1],[-1,0],[1,-2],[2,-1],[2,1],[1,2],[-1,2],[-2,1],[-3,0],[-2,-1],[-1,-2],[3,0],[5,0],[-5,0],[0,-3],[0,3],[0,-5],[0,5],[1,4],[-1,4],[-4,-1],[-4,1],[-1,-4],[1,-4],[4,-1],[4,1]],[[0,-1],[0,-3],[0,-5],[0,-7],[0,-9],[0,-8],[0,-6],[0,-4],[0,-2],[0,1],[0,2],[0,3],[0,4],[0,6],[0,5],[0,7],[0,9],[0,8],[1,0],[2,0],[2,0],[3,0],[4,0],[5,0],[6,0],[-1,0],[-2,0],[-3,0],[-4,0],[-5,0],[-6,0],[0,0],[1,-1],[2,-2],[-1,1],[-2,2],[-2,-2],[-1,-1],[1,1],[2,2],[2,-1],[3,-1],[4,-1],[3,-2],[3,-3],[2,-3],[1,-2],[1,-2],[1,-3],[-1,-3],[-2,-3],[-3,-3],[-3,-2],[-3,-1],[-2,-1],[-1,-2],[-1,-4],[-4,-1],[1,-4],[3,1],[3,3],[3,2],[2,3],[1,3],[1,2],[2,1],[4,1],[1,4],[-1,4],[-1,3],[-2,3],[-3,3],[-3,2],[-1,2],[-2,1],[-4,1],[-3,1],[-1,-8],[-1,-7],[-1,-6],[-1,-5],[1,-8],[1,-8],[1,-7],[1,-6],[1,-5],[-2,-5],[-2,-4],[2,-5],[2,-4],[1,5],[1,6],[1,8],[1,7],[-1,5],[-1,6],[-1,7],[-1,8],[2,4],[2,5],[-2,4],[-2,5],[-5,-1],[-5,0],[-5,1],[5,-1],[5,1]],[[0,-7],[0,-6],[0,-5],[0,-4],[0,-3],[0,-2],[0,-1],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[0,-8],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[-1,0],[-2,0],[-3,0],[-4,0],[-5,0],[-6,0],[-7,0],[-8,0],[-1,-1],[-2,-2],[-3,-3],[-4,-4],[-5,-5],[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[1,-1],[2,-2],[3,-3],[4,-4],[5,-5],[-1,1],[6,-6],[-6,-6],[-2,2],[-3,3],[-4,4],[-5,5],[-6,6],[-1,-2],[1,-2],[2,-1],[2,1],[1,2],[-1,2],[-2,1],[-2,-1],[-3,-2],[-4,-1],[-4,1],[-3,2],[-2,-3],[-1,-4],[1,-4],[2,-3],[3,-2],[4,-1],[4,1],[3,2],[2,3],[1,4],[-1,4],[-2,3],[-3,4],[-2,5],[-1,5],[-2,4],[1,5],[2,5],[3,4],[2,4],[4,2],[4,3],[5,2],[5,1],[4,-2],[4,-3],[5,-2],[5,-1],[2,-4],[3,-4],[2,-5],[1,-5],[-2,-4],[-3,-4],[-2,-5],[-1,-5],[-4,-2],[-4,-3],[-5,-3],[-5,-2],[-5,-1],[-4,2],[-5,1],[-5,2],[-4,3],[-4,-5],[-3,-5],[3,-5],[4,-5],[5,-4],[5,-3],[5,3],[5,4],[4,5],[3,5],[-3,5],[-4,5],[-5,4],[-5,3],[-5,-4],[-1,-7],[-2,-6],[1,-7],[2,-6],[1,-6],[-1,-6],[5,-6],[6,-5],[6,5],[5,6],[7,1],[6,2],[6,1],[7,-1],[6,-1],[6,-2],[-6,-2],[-6,-1],[-7,-1],[-7,1],[-6,1],[-6,2],[-6,5],[-5,6],[-6,-5],[-5,-6],[1,7],[2,6],[1,6],[-1,6],[-1,7],[-2,6],[5,-7],[6,-7],[7,-7],[7,-6],[7,-5],[-5,-7],[-6,-7],[-7,-7],[-7,-6],[-7,-5],[-7,5],[-7,6],[-7,7],[-6,7],[-5,7],[5,7],[6,7],[7,7],[7,6],[7,5],[6,-8],[7,-8],[8,-8],[8,-7],[8,-6],[8,6],[8,7],[8,8],[7,8],[6,8],[-6,-8],[-7,-8],[-8,-8],[-8,-7],[-8,-6],[-8,6],[-8,7],[-8,8],[-7,8],[-6,8],[7,-9],[8,-9],[9,-9],[9,-8],[9,-7],[-7,-9],[-8,-9],[-9,-9],[-9,-8],[-9,-7],[-9,7],[-9,8],[-9,9],[-8,9],[-7,9],[7,9],[8,9],[9,9],[9,8],[9,7],[9,0],[-9,0],[0,-9],[0,9]]];
+let intnh;
+
+function setup() {
+	cnv = createCanvas(canvasSize,canvasSize);
+  cnv.parent('#interval_canvas');
+  text("¡Define tu vecindario primero!");
+  //setTimeout(()=>{},1);
+}
+
+function startIntervalInterface() {
+  select('#interval_cover').remove();
+  select('#nh_cover').show();
+  intnh = parseNh(nh);
+  console.log(intnh);
+  network  = randomNetworkGpu(density);
+  populateIntervals();
+  displayCells();
+  rightMenu();
+  select('#seed').mouseClicked(()=>{network=randomNetworkGpu(density);displayCells()});
+  select('#save_img').mouseClicked(()=>{saveCanvas("MiAutomata","png")});
+  select('#epoch').mouseClicked(newEpoch);
+  select('#animate').mouseClicked(function() {
+    animate = !animate;
+    if (animate) {this.html("...Parar");epochinterval = setInterval(newEpoch,100)} 
+    else {this.html("Animar");clearInterval(epochinterval)}
+  });
+}
 
 function populateIntervals() {
 	for (let i=0;i<intnh.length;i++) {
@@ -54,68 +80,31 @@ const clearNetworkGpu = gpu.createKernel(function() {
 	return 0;
 }).setOutput([cellNum,cellNum]);
 
-function setup() {
-	cnv = createCanvas(canvasSize,canvasSize);
-	cnv.parent('#interval_canvas');
-  setTimeout(()=>{
-    network  = randomNetworkGpu(density);
-    populateIntervals();
-    displayCells();
-    rightMenu();
-    select('#seed').mouseClicked(()=>{network=randomNetworkGpu(density);displayCells()});
-    select('#save_img').mouseClicked(()=>{saveCanvas("MiAutomata","png")});
-    select('#epoch').mouseClicked(newEpoch);
-    select('#animate').mouseClicked(function() {
-      animate = !animate;
-      if (animate) {this.html("...Parar");epochinterval = setInterval(newEpoch,100)} 
-      else {this.html("Animar");clearInterval(epochinterval)}
-    });
-  },1);
-  let slidersarray = selectAll(".rangeslider").map(d=>d.elt);
-  let options = {start:[20,80],connect:true,range:{'min':0,'max':100}}
-  for (let i=0;i<slidersarray.length;i++) {
-    noUiSlider.create(slidersarray[i],options,true);
-  }
-}
-
 function rightMenu() {
   // GUI sliders
   for (let ld=0;ld<2;ld++) {
-    const id = ld==0 ? "#life_sliders" : "#death_sliders";
-    let interval = ld==0 ? intervalLife : intervalDeath;
-    let p = ld==0 ? intervalPLife : intervalPDeath;
-    let sliders = ld==0 ? intervalSlidersLife : intervalSlidersDeath;
     const type = ld==0 ? "life" : "death";
+    const id = type=="life" ? "#life_sliders" : "#death_sliders";
+    let interval = type=="life" ? intervalLife : intervalDeath;
+    let p = type=="life" ? intervalPLife : intervalPDeath;
+    let sliders = type=="life" ? intervalSlidersLife : intervalSlidersDeath;
+    sliders = [];
+    p = [];
     for (let i=0;i<intnh.length;i++) {
-      sliders[i] = [];
-      p[i] = [];
-      for (let j=0;j<intervalNum;j++) {
-        const cont = createDiv().parent(id).class("#double_slider_div");
-        sliders[i][j] = [];
-        for (let k=0;k<2;k++) {
-          sliders[i][j][k] = createSlider(0,intnh[i].length,interval[i][j][k],1).parent(id).class("slider");
-          sliders[i][j][k].input(function() {
-            sliderChange(i,j,type);
-          });
-          
-        }
-        const v1 = interval[i][j][0];
-        const v2 = interval[i][j][1];
-        p[i][j] = createSpan(`${v1}-${v2}/${intnh[i].length}`).parent(cont).class('interval_span');
-      }
+      const container = createDiv("").parent(id).class("interval_container");
+      const nhlen = intnh[i].length;
+      const start = type=="life" ? [Math.floor(nhlen/4)*1,Math.floor(nhlen/4)*2] : [Math.floor(nhlen/4)*2,Math.floor(nhlen/4)*3];
+      const options = {start:start,step:1,connect:true,range:{'min':0,'max':nhlen},keyboardSupport:false,behaviour:"drag"}
+      sliders[i] = createDiv("").parent(container).class("slider").elt;
+      noUiSlider.create(sliders[i],options,true);
+      p[i] = createSpan(sVal(sliders[i])[0]+"/"+sVal(sliders[i])[1]).parent(container);
+      interval[i] = sVal(sliders[i]);
+      sliders[i].noUiSlider.on('update', function(v) {
+        p[i].html(sVal(sliders[i])[0]+"/"+sVal(sliders[i])[1]);
+        interval[i] = sVal(sliders[i]);
+      });
     }
   }
-}
-
-function sliderChange(i,j,type) {
-  // Changes intervals in response to sliders
-  let interval = type=="life" ? intervalLife : intervalDeath;
-  let p = type=="life" ? intervalPLife : intervalPDeath;
-  let sliders = type=="life" ? intervalSlidersLife : intervalSlidersDeath;
-  let v1 = sliders[i][j][0].value();
-  let v2 = sliders[i][j][1].value();
-  p[i][j].html(`${v1}-${v2}/${intnh[i].length}`);
-  interval[i][j] = [v1,v2];
 }
 
 function displayCells() {
@@ -234,4 +223,35 @@ function newEpoch() {
   const nextNetwork3 = applyRuleGpu(network,neighbors3,intervalNum,intervalLife[2],intervalDeath[2]);
   network = nextNetwork3;
   displayCells();
+}
+
+
+// HELPERS
+
+function sVal(s) {
+  // returns the values of a slider
+  const v = s.noUiSlider.get();
+  return [parseInt(v[0]),parseInt(v[1])]
+}
+
+function parseNh(nh) {
+  if (emptyArrays(nh)) {return [[[0,0]],[[0,0]],[[0,0]]]}
+  const newNh = nh.map(nlist=>{
+    const temp = nlist.map(elt=>{
+      const arr = elt.split(",")
+      return [parseInt(arr[0]),parseInt(arr[1])]
+    })
+    return temp
+  });
+  return newNh
+}
+
+function emptyArrays(arr) {
+  let answ = false;
+  for (let i=0;i<arr.length;i++) {
+    if (arr[i].length<=0) {
+      answ = true
+    }
+  }
+  return answ
 }

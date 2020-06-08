@@ -1,17 +1,34 @@
+:root {
+  --cuadro: green;
+  --borde_cuadro: pink;
+  --rayitas: red;
+  --riel: white;
+  --conexion: blue;
+
+  --fondo: yellow;
+  --general: greenyellow;
+  --interfaz: pink;
+  --texto: mintcream;
+  --cover: darkorange;
+
+  --boton: white;
+  --botonh: black;
+  --botona: red;
+}
+
 body {
   padding:0;
   margin:0;
   font-size: 1.2em;
   font-family: 'Oxygen', sans-serif;
-  /* background: black;
-  color: white; */
+  background: var(--fondo);
 }
 
 button {
   font-family:'Open Sans';
   font-size:0.8em;
   color:#111111;
-  background:white;
+  background: var(--boton);
   box-shadow:none;
   border:solid 1px;
   border-radius:5px;
@@ -21,57 +38,44 @@ button {
 
 button:hover {
   color:white;
-  background:#111111;
+  background: var(--botonh);
 }
 
 button:active {
-  background:#666666;
+  background: var(--botona);
+}
+
+.activebutton {
+  background: var(--botona);
 }
 
 button:focus {
   outline:none;
 }
 
-#interval_advanced {
-  visibility: hidden;
-}
-
-#nh_advanced {
-  visibility: hidden;
-}
-
-.slider {
-  box-shadow:none;
-  -webkit-appearance: none;
-  -moz-appearance:none;
-  appearance: none;
-  color:#111111;
-  background:#111111;
-  height:2px;
-  /* position: absolute; */
-}
-
-.slider:focus {
-  outline:none;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width:20px;
-  height:20px;
-  border-radius:5px;
-  border:solid 2px #111111;
-  background:white;
-  cursor:pointer;
-}
-
-.slider::-webkit-slider-thumb:hover {
-  background:#111111;
-}
-
-.double_slider_div {
+.outer_container {
   position: relative;
+}
+
+.cover {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: var(--cover);
+  text-align: center;
+  font-size: 2.5em;
+  padding: 1em;
+}
+
+#nh_cover {
+  display: none;
+}
+
+.text {
+  background: var(--texto);
 }
 
 #general {
@@ -79,6 +83,7 @@ button:focus {
   max-width: 1100px;
   margin: auto;
   padding: 1em;
+  background: var(--general);
 }
 
 .general_header {
@@ -121,7 +126,11 @@ button:focus {
   margin:0;
 }
 
-#nh_cont {
+.interface {
+  background: var(--interfaz);
+}
+
+#nh_interface {
   border: solid 1px lightgrey;
   padding: 10px;
   display: flex;
@@ -136,14 +145,14 @@ button:focus {
   cursor: crosshair;
 }
 
-#interval_cont {
+#interval_interface {
   border: solid 1px lightgrey;
   padding: 10px;
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr;
 }
 
-#interval_left {
+#interval_right {
   border: solid 1px lightgrey;
   padding: 10px;
   display: flex;
@@ -151,9 +160,15 @@ button:focus {
   flex-direction: column;
 }
 
-#interval_right {
-  border: solid 1px lightgrey;
+#sliders_right {
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.interval_container {
+  padding: .5em 0;
+  display: grid;
+  grid-template-columns: 7fr 1fr;
 }

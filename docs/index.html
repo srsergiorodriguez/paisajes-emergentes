@@ -6,11 +6,12 @@
     <title>Paisajes Emergentes - Explora autómatas celulares compuestos</title>
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <link href="nouislider.min.css" rel="stylesheet">
+    <link href="nouislider.css" rel="stylesheet">
     <script src="nouislider.min.js"></script>
     <script src="gpu-browser.min.js"></script>
     <script src="p5.min.js"></script>
     <script src="nh_interface.js"></script>
+    <script src="interval_interface.js"></script>
   </head>
   <body>
     <div href="#intro" id="general">
@@ -22,7 +23,7 @@
         </div>
       </header>
       <section class="content">
-        <section id="intro">
+        <section id="intro" class="text">
           <header class="content_header">
             <h1>¿De qué se trata esto?</h1>
           </header>
@@ -36,10 +37,10 @@
             Primero piensa en un juego de mesa, digamos, el juego de damas o el ajedrez. Sabes que en esos juegos hay dos componentes principales: unas <strong><em>piezas</em></strong> —las fichas negras y blancas, los peones, la reina, etc...— y unas <strong><em>reglas</em></strong> —en damas las fichas solo pueden moverse en diagonal, en ajedrez cada tipo de ficha tiene ciertos movimientos válidos; además, unas fichas pueden comerse a otras, y así—. Adicionalmente, si aplicamos una sucesión de reglas válidas sobre las piezas obtenemos una partida de juego en la que podemos ganar o perder. Hasta ahí, todo claro.
           </p>
           <p>
-            Pues bien, un <strong><em>autómata celular</em></strong> es muy parecido. Hay unas piezas en un tablero de juego, y esas piezas deben seguir unas reglas definidas anteriormente. Como sucede con los juegos, cada vez que aplicamos una regla todo el tablero cambia, el sistema se reconfigura. Si volvieramos a aplicar la misma regla, en el nuevo estado del tablero, el sistema se reconfiguraría de nuevo.
+            Pues bien, un <strong><em>autómata celular</em></strong> es muy parecido. Hay unas piezas en un tablero de juego, y esas piezas deben seguir unas reglas definidas anteriormente. Como sucede con los juegos, cada vez que aplicamos una regla todo el tablero cambia, el sistema se reconfigura. Si volvieramos a aplicar la misma regla en el nuevo estado del tablero, el sistema se reconfiguraría de nuevo.
           </p>
           <p>
-            Los autómatas celulares más comunes están compuestos por "fichas" o elementos que pueden tener dos posibilidades: pueden ser cuadros blancos o negros, así como las fichas de las damas o el ajedrez. 
+            Los autómatas celulares más comunes están compuestos por "fichas" o cuadros de dos posibilidades, representadas por dos colores -blancos o negros, verdes o azules, rojos o amarillos, en fin-, así que es muy parecido a las fichas de las damas o el ajedrez. 
             Los autómatas celulares, en su forma más abstracta, son modelos matemáticos que exhiben comportamientos emergentes. Es decir, una vez definidas las reglas y el estado inicial, y luego de aplicar las reglas muchas veces, el tablero muestra, increíblemente, comportamientos muy complejos. Aquí hay un ejemplo, esto es un autómata celular de una dimensión, o sea, en un tablero que solo está compuesto por una
           </p>
           <header class="content_header">
@@ -49,7 +50,7 @@
             Pues, una vez dicho todo lo anterior, un autómata celular compuesto es algo muy simple: es un autómata sobre el que se aplican varias reglas con vecindarios diferentes. Podemos aplicar un vecindario pequeño, para modificar el estado del tablero a una escala mínima, luego aplicar otra regla con un vecindario más grande, y así obtenemos configuraciones aún más complejas que las que se obtienen con los autómatas celulares simples. Con suficiente maña y cuidado, un autómata celular complejo puede mostrarnos patrones emergenes, paisajes autoorganizados que se asemejan a la de los seres vivos. Es como si a partir de un sistema muy rígido de reglas discretas, bien definidas, obtuvieramos una receta para la vida, un comportamiento rico e impredescible.
           </p>
         </section>
-        <section id="nh_exp">
+        <section id="nh_exp" class="text">
           <header class="content_header">
             <h1>Primera parte</h1>
           </header>
@@ -65,7 +66,7 @@
             fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
           </p>
         </section>
-        <section id="nh">
+        <section id="nh" class="text">
           <header class="content_header">
             <h1>Define el vecindario</h1>
           </header>
@@ -80,29 +81,30 @@
             Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
             fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
           </p>
-          <div id="nh_cont">
-            <div id="nh_canvas"></div>
-            <div id="nh_controls">
-              <div>
-                <p>Cambia aquí la herramienta de dibujo:</p>
-                <button id="nh_drawerase">Borrador</button>
-              </div>
-              <div>
-                <p id="nh_p">Escoge el vecindario que quieres editar:</p>
-                <button class="nh_btn">Vecindario 0</button>
-                <button class="nh_btn">Vecindario 1</button>
-                <button class="nh_btn">Vecindario 2</button>
-              </div>
-              <div>
-                <button id="nh_advanced_btn">Más opciones</button>
-                <div id="nh_advanced">
-                  <button id="nh_save">Guarda tus vecindarios</button>
+          <div class="outer_container">
+            <div id="nh_cover" class="cover"><p>¡listo! Puedes continuar con la exploración...</p></div>
+            <div id="nh_interface" class="interface">
+              <div id="nh_canvas"></div>
+              <div id="nh_controls">
+                <div>
+                  <span>Cambia la herramienta por:</span>
+                  <button id="nh_drawerase">Borrador</button>
+                </div>
+                <div>
+                  <span id="nh_p">Escoge el vecindario que quieres editar:<br></span>
+                  <button class="nh_btn">Vecindario 0</button>
+                  <button class="nh_btn">Vecindario 1</button>
+                  <button class="nh_btn">Vecindario 2</button>
+                </div>
+                <div>
+                  <span>Una vez termines de dibujar los vecindarios...<br>clic aquí:</span>
+                  <button id="nh_finish" onclick="startIntervalInterface()">¡Terminé!</button>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section id="interval_exp">
+        <section id="interval_exp" class="text">
           <header class="content_header">
             <h1>Primera parte</h1>
             <h2>Un subtítulo sobre la primera parte</h2>
@@ -119,7 +121,7 @@
             fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
           </p>
         </section>
-        <section id="interval">
+        <section id="interval" class="text">
           <header class="content_header">
             <h1>Define los intervalos</h1>
           </header>
@@ -134,42 +136,47 @@
             Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
             fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
           </p>
-          <div id="interval_cont">
-            <div id="interval_left">
-              <div id="interval_top_controls">
-                <button id="seed">Condiciones iniciales aleatorias</button>
-                <button id="epoch">Nueva iteración</button>
-                <button id="animate">Animar</button>
-                <div>
-                  <button id="save_img">Guarda la imagen</button>
-                </div>
-                <div>
-                  <button id="interval_advanced_btn">Más opciones</button>
-                  <div id="interval_advanced">
-                    <button id="interval_save">Guarda tus intervalos</button>
-                    <button id="interval_save">Carga tus intervalos</button>
+          <div class="outer_container">
+            <div id="interval_cover" class="cover"><p>Antes de definir los intervalos, primero define tu vecindario...</p></div>
+            <div id="interval_interface" class="interface">
+              <div id="interval_left">
+                <div id="interval_canvas"></div>
+              </div>
+              <div id=interval_right>
+                <div id="interval_top_controls">
+                  <button id="seed">Condiciones iniciales aleatorias</button>
+                  <button id="epoch">Nueva iteración</button>
+                  <button id="animate">Animar</button>
+                  <div>
+                    <button id="save_img">Guarda la imagen</button>
+                  </div>
+                  <div>
+                    <button id="interval_advanced_btn">Más opciones</button>
+                    <div id="interval_advanced">
+                      <button id="interval_save">Guarda tus intervalos</button>
+                      <button id="interval_save">Carga tus intervalos</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div id="interval_canvas"></div>
-            </div>
-            <div id="interval_right">
-              <div id="life_sliders">
-                <p>Intervalos vida:</p>
-                <div class="rangeslider" id="intl1"></div>
-                <div class="rangeslider" id="intl2"></div>
-                <div class="rangeslider" id="intl3"></div>
-              </div>
-              <div id="death_sliders">
-                <p>Intervalos muerte:</p>
-                <div class="rangeslider" id="intd1"></div>
-                <div class="rangeslider" id="intd2"></div>
-                <div class="rangeslider" id="intd3"></div>
+                <div id="sliders_right">
+                  <div id="life_sliders">
+                    <p>Intervalos vida:</p>
+                    <div class="rangeslider" id="intl1"></div>
+                    <div class="rangeslider" id="intl2"></div>
+                    <div class="rangeslider" id="intl3"></div>
+                  </div>
+                  <div id="death_sliders">
+                    <p>Intervalos muerte:</p>
+                    <div class="rangeslider" id="intd1"></div>
+                    <div class="rangeslider" id="intd2"></div>
+                    <div class="rangeslider" id="intd3"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <section id="Upload">
+        <section id="Upload" class="text">
           <header class="content_header">
             <h1>Primera parte</h1>
             <h2>Un subtítulo sobre la primera parte</h2>
@@ -186,7 +193,7 @@
             fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
           </p>
         </section>
-        <section id="ar">
+        <section id="ar" class="text">
           <header class="content_header">
             <h1>Primera parte</h1>
             <h2>Un subtítulo sobre la primera parte</h2>
@@ -209,5 +216,4 @@
       </footer>
     </div>
   </body>
-  <script src="interval_interface.js"></script>
 </html>
