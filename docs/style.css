@@ -64,6 +64,10 @@ button:focus {
   width: 100%;
 }
 
+#nh_explanation {
+  text-align: center;
+}
+
 .outer_container {
   position: relative;
 }
