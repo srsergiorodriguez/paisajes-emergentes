@@ -5,92 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paisajes Emergentes - Explora autómatas celulares compuestos</title>
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- ESTILO -->
     <link href="style.css" rel="stylesheet">
-    <link href="nouislider.css" rel="stylesheet">
-    <script src="nouislider.min.js"></script>
-    <script src="gpu-browser.min.js"></script>
-    <script src="p5.min.js"></script>
-    <script src="nh_explanation.js"></script>
-    <script src="nh_interface.js"></script>
-    <script src="interval_interface.js"></script>
+    <link href="../libraries/nouislider.css" rel="stylesheet">
+    <link rel="stylesheet" href="../reveal/reveal.css">
+    <link rel="stylesheet" href="../reveal/theme/custom1.css" id="theme">
+    
+    <!-- LIBRERÍAS -->
+    <script src="../libraries/nouislider.min.js"></script>
+    <script src="../libraries/gpu-browser.min.js"></script>
+    <script src="../libraries/p5.min.js"></script>
+    <script src="../reveal/reveal.js"></script>
+
+    <!-- SKETCHES -->
+    <script src="../sketches/nh_explanation.js"></script>
+    <script src="../sketches/nh_interface.js"></script>
+    <script src="../sketches/interval_interface.js"></script>
   </head>
   <body>
-    <div href="#intro" id="general">
-      <header class="general_header">
-        <h1>Paisajes emergentes</h1>
-        <h2>Crea autómatas celulares complejos</h2>
-        <div id="cover">
-          <img src="gif1.gif"/>
-        </div>
-      </header>
-      <section class="content">
-        <section id="intro" class="text">
-          <header class="content_header">
-            <h1>¿De qué se trata esto?</h1>
-          </header>
-          <p>
-            En pocas palabras, este es un <strong>explorable artístico</strong>, una obra interactiva con la que podrás crear tus propias composiciones de paisajes emergentes usando autómatas celulares compuestos. Ahora, si eso suena como un montón de palabrejas extrañas, no hay problema, a lo largo del explorable vamos a desenredar la complejidad de todos esos términos para que puedas, poco a poco, crear tus propias obras y apreciar la belleza y el significado profundo que encierran los autómatas celulares. Así que vamos por partes...
-          </p>
-          <header class="content_header">
-            <h1>¿Entonces, qué es un autómata celular?</h1>
-          </header>
-          <p>
-            Primero piensa en un juego de mesa, digamos, el juego de damas o el ajedrez. Sabes que en esos juegos hay dos componentes principales: unas <strong><em>piezas</em></strong> —las fichas negras y blancas, los peones, la reina, etc...— y unas <strong><em>reglas</em></strong> —en damas las fichas solo pueden moverse en diagonal, en ajedrez cada tipo de ficha tiene ciertos movimientos válidos; además, unas fichas pueden comerse a otras, y así—. Adicionalmente, si aplicamos una sucesión de reglas válidas sobre las piezas obtenemos una partida de juego en la que podemos ganar o perder. Hasta ahí, todo claro.
-          </p>
-          <div id="tableros">
-            <img src="ilustracion.png" alt=""/>
-            <img src="ilustracion1.png" alt=""/>
-            <img src="ilustracion2.png" alt=""/>
-          </div>
-          <p>
-            Pues bien, un <strong><em>autómata celular</em></strong> es muy parecido. Hay unas piezas en un tablero de juego, y esas piezas deben seguir unas reglas definidas anteriormente. Como sucede con los juegos, cada vez que aplicamos una regla todo el tablero cambia, el sistema se reconfigura. Si volvieramos a aplicar la misma regla en el nuevo estado del tablero, el sistema se reconfiguraría de nuevo.
-          </p>
-          <p>
-            Los autómatas celulares más comunes están compuestos por "fichas" o cuadros de dos posibilidades, representadas por dos colores -blancos o negros, verdes o azules, rojos o amarillos, en fin-, así que es muy parecido a las fichas de las damas o el ajedrez. Y están compuestos básicamente por dos reglas: un vecindario y una decisión de vida o muerte.
-            Los autómatas celulares, en su forma más abstracta, son modelos matemáticos que exhiben comportamientos emergentes. Es decir, una vez definidas las reglas y el estado inicial, y luego de aplicar las reglas muchas veces, el tablero muestra, increíblemente, comportamientos muy complejos. Aquí hay un ejemplo, esto es un autómata celular de una dimensión, o sea, en un tablero que solo está compuesto por una
-          </p>
-          <header class="content_header">
-            <h2>El vecindario</h2>
-          </header>
-          <header class="content_header">
-            <h1>¿y qué es un autómata celular compuesto?</h1>
-          </header>
-          <p>
-            Pues, una vez dicho todo lo anterior, un autómata celular compuesto es algo muy simple: es un autómata sobre el que se aplican varias reglas con vecindarios diferentes. Podemos aplicar un vecindario pequeño, para modificar el estado del tablero a una escala mínima, luego aplicar otra regla con un vecindario más grande, y así obtenemos configuraciones aún más complejas que las que se obtienen con los autómatas celulares simples. Con suficiente maña y cuidado, un autómata celular complejo puede mostrarnos patrones emergenes, paisajes autoorganizados que se asemejan a la de los seres vivos. Es como si a partir de un sistema muy rígido de reglas discretas, bien definidas, obtuvieramos una receta para la vida, un comportamiento rico e impredescible.
-          </p>
+    <div class="reveal">
+      <div class="slides">
+
+        <section><h1>Paisajes emergentes</h1></section>
+
+        <section>
+          <img data-src="../images/titulo.gif"/>
+          <button class="main_btn" onclick="Reveal.next();">Empezar</button>
         </section>
-        <section id="nh_exp" class="text">
-          <header class="content_header">
-            <h1>Primera parte</h1>
-          </header>
-          <p>
-            Pressgang booty reef <span class='tooltip1'>Plate Fleet hornswaggle<span class='tooltip1-content'>Esto es una prueba de tooltip. Quiero ver qué tan bien funciona este sistema que da información adicional.</span></span> topmast no prey, no pay hearties yo-ho-ho black spot. Yellow Jack
-            strike colors interloper topsail dead men tell no tales swab pirate ho line maroon. Brigantine no prey, no pay
-            black jack Nelsons folly reef sails draft hands hail-shot piracy handsomely. Schooner bring a spring upon her
-            cable gangplank draft fire ship Corsair cutlass hulk crimp maroon. Loot dead men tell no tales topsail nipper
-            Jolly <span class='tooltip1'>hornswaggle<span class='tooltip1-content'>Esto es un nuevo tooltip.</span></span> Roger Nelsons folly scourge of the seven seas holystone fathom port. Man-of-war brig capstan
-            square-rigged heave to draught Admiral of the Black topmast bilge water mizzenmast. Weigh anchor Letter of
-            Marque crow's nest killick yo-ho-ho galleon driver nipperkin scuttle mutiny. Pressgang gally Pirate Round
-            Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
-            fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
-          </p>
-          <div id="nh_explanation" class="interface"></div>
-        </section>
-        <section id="nh" class="text">
-          <header class="content_header">
-            <h1>Define el vecindario</h1>
-          </header>
-          <p>
-            Pressgang booty reef <span class='tooltip1'>Plate Fleet hornswaggle<span class='tooltip1-content'>Esto es una prueba de tooltip. Quiero ver qué tan bien funciona este sistema que da información adicional.</span></span> topmast no prey, no pay hearties yo-ho-ho black spot. Yellow Jack
-            strike colors interloper topsail dead men tell no tales swab pirate ho line maroon. Brigantine no prey, no pay
-            black jack Nelsons folly reef sails draft hands hail-shot piracy handsomely. Schooner bring a spring upon her
-            cable gangplank draft fire ship Corsair cutlass hulk crimp maroon. Loot dead men tell no tales topsail nipper
-            Jolly <span class='tooltip1'>hornswaggle<span class='tooltip1-content'>Esto es un nuevo tooltip.</span></span> Roger Nelsons folly scourge of the seven seas holystone fathom port. Man-of-war brig capstan
-            square-rigged heave to draught Admiral of the Black topmast bilge water mizzenmast. Weigh anchor Letter of
-            Marque crow's nest killick yo-ho-ho galleon driver nipperkin scuttle mutiny. Pressgang gally Pirate Round
-            Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
-            fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
-          </p>
+        <!-- EXPLICACIÓN DE VECINDARIO -->
+        <section><div id="nh_explanation" class="interface"></div></section>
+
+        <!-- DEFINICIÓN DE VECINDARIO -->
+        <section>
           <div class="outer_container">
             <div id="nh_cover" class="cover"><p>¡listo! Puedes continuar con la exploración...</p></div>
             <div id="nh_interface" class="interface">
@@ -101,12 +48,14 @@
                   <button id="nh_drawerase">Borrador</button>
                 </div>
                 <div>
+                  <br>
                   <span id="nh_p">Escoge el vecindario que quieres editar:<br></span>
                   <button class="nh_btn">Vecindario 0</button>
                   <button class="nh_btn">Vecindario 1</button>
                   <button class="nh_btn">Vecindario 2</button>
                 </div>
                 <div>
+                  <br>
                   <span>Una vez termines de dibujar los vecindarios...<br>clic aquí:</span>
                   <button id="nh_finish" onclick="startIntervalInterface()">¡Terminé!</button>
                 </div>
@@ -114,38 +63,9 @@
             </div>
           </div>
         </section>
-        <section id="interval_exp" class="text">
-          <header class="content_header">
-            <h1>Primera parte</h1>
-            <h2>Un subtítulo sobre la primera parte</h2>
-          </header>
-          <p>
-            Pressgang booty reef <span class='tooltip1'>Plate Fleet hornswaggle<span class='tooltip1-content'>Esto es una prueba de tooltip. Quiero ver qué tan bien funciona este sistema que da información adicional.</span></span> topmast no prey, no pay hearties yo-ho-ho black spot. Yellow Jack
-            strike colors interloper topsail dead men tell no tales swab pirate ho line maroon. Brigantine no prey, no pay
-            black jack Nelsons folly reef sails draft hands hail-shot piracy handsomely. Schooner bring a spring upon her
-            cable gangplank draft fire ship Corsair cutlass hulk crimp maroon. Loot dead men tell no tales topsail nipper
-            Jolly <span class='tooltip1'>hornswaggle<span class='tooltip1-content'>Esto es un nuevo tooltip.</span></span> Roger Nelsons folly scourge of the seven seas holystone fathom port. Man-of-war brig capstan
-            square-rigged heave to draught Admiral of the Black topmast bilge water mizzenmast. Weigh anchor Letter of
-            Marque crow's nest killick yo-ho-ho galleon driver nipperkin scuttle mutiny. Pressgang gally Pirate Round
-            Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
-            fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
-          </p>
-        </section>
-        <section id="interval" class="text">
-          <header class="content_header">
-            <h1>Define los intervalos</h1>
-          </header>
-          <p>
-            Pressgang booty reef <span class='tooltip1'>Plate Fleet hornswaggle<span class='tooltip1-content'>Esto es una prueba de tooltip. Quiero ver qué tan bien funciona este sistema que da información adicional.</span></span> topmast no prey, no pay hearties yo-ho-ho black spot. Yellow Jack
-            strike colors interloper topsail dead men tell no tales swab pirate ho line maroon. Brigantine no prey, no pay
-            black jack Nelsons folly reef sails draft hands hail-shot piracy handsomely. Schooner bring a spring upon her
-            cable gangplank draft fire ship Corsair cutlass hulk crimp maroon. Loot dead men tell no tales topsail nipper
-            Jolly <span class='tooltip1'>hornswaggle<span class='tooltip1-content'>Esto es un nuevo tooltip.</span></span> Roger Nelsons folly scourge of the seven seas holystone fathom port. Man-of-war brig capstan
-            square-rigged heave to draught Admiral of the Black topmast bilge water mizzenmast. Weigh anchor Letter of
-            Marque crow's nest killick yo-ho-ho galleon driver nipperkin scuttle mutiny. Pressgang gally Pirate Round
-            Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
-            fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
-          </p>
+
+        <!-- DEFINICIÓN DE INTERVALOS -->
+        <section>
           <div class="outer_container">
             <div id="interval_cover" class="cover"><p>Antes de definir los intervalos, primero define tu vecindario...</p></div>
             <div id="interval_interface" class="interface">
@@ -154,8 +74,8 @@
               </div>
               <div id=interval_right>
                 <div id="interval_top_controls">
-                  <button id="seed">Condiciones iniciales aleatorias</button>
-                  <button id="epoch">Nueva iteración</button>
+                  <button id="seed">Nueva semilla</button>
+                  <button id="epoch">Turno</button>
                   <button id="animate">Animar</button>
                   <div>
                     <button id="save_img">Guarda la imagen</button>
@@ -179,44 +99,14 @@
             </div>
           </div>
         </section>
-        <section id="Upload" class="text">
-          <header class="content_header">
-            <h1>Primera parte</h1>
-            <h2>Un subtítulo sobre la primera parte</h2>
-          </header>
-          <p>
-            Pressgang booty reef <span class='tooltip1'>Plate Fleet hornswaggle<span class='tooltip1-content'>Esto es una prueba de tooltip. Quiero ver qué tan bien funciona este sistema que da información adicional.</span></span> topmast no prey, no pay hearties yo-ho-ho black spot. Yellow Jack
-            strike colors interloper topsail dead men tell no tales swab pirate ho line maroon. Brigantine no prey, no pay
-            black jack Nelsons folly reef sails draft hands hail-shot piracy handsomely. Schooner bring a spring upon her
-            cable gangplank draft fire ship Corsair cutlass hulk crimp maroon. Loot dead men tell no tales topsail nipper
-            Jolly <span class='tooltip1'>hornswaggle<span class='tooltip1-content'>Esto es un nuevo tooltip.</span></span> Roger Nelsons folly scourge of the seven seas holystone fathom port. Man-of-war brig capstan
-            square-rigged heave to draught Admiral of the Black topmast bilge water mizzenmast. Weigh anchor Letter of
-            Marque crow's nest killick yo-ho-ho galleon driver nipperkin scuttle mutiny. Pressgang gally Pirate Round
-            Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
-            fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
-          </p>
-        </section>
-        <section id="ar" class="text">
-          <header class="content_header">
-            <h1>Primera parte</h1>
-            <h2>Un subtítulo sobre la primera parte</h2>
-          </header>
-          <p>
-            Pressgang booty reef <span class='tooltip1'>Plate Fleet hornswaggle<span class='tooltip1-content'>Esto es una prueba de tooltip. Quiero ver qué tan bien funciona este sistema que da información adicional.</span></span> topmast no prey, no pay hearties yo-ho-ho black spot. Yellow Jack
-            strike colors interloper topsail dead men tell no tales swab pirate ho line maroon. Brigantine no prey, no pay
-            black jack Nelsons folly reef sails draft hands hail-shot piracy handsomely. Schooner bring a spring upon her
-            cable gangplank draft fire ship Corsair cutlass hulk crimp maroon. Loot dead men tell no tales topsail nipper
-            Jolly <span class='tooltip1'>hornswaggle<span class='tooltip1-content'>Esto es un nuevo tooltip.</span></span> Roger Nelsons folly scourge of the seven seas holystone fathom port. Man-of-war brig capstan
-            square-rigged heave to draught Admiral of the Black topmast bilge water mizzenmast. Weigh anchor Letter of
-            Marque crow's nest killick yo-ho-ho galleon driver nipperkin scuttle mutiny. Pressgang gally Pirate Round
-            Plate Fleet pirate Chain Shot carouser lugsail plunder gibbet. Measured fer yer chains splice the main brace
-            fore wench bring a spring upon her cable Plate Fleet ye spanker bucko bilged on her anchor.
-          </p>
-        </section>
-      </section>
-      <footer class="footer">
-        <p>Sergio Rodríguez Gómez — 2020</p>
-      </footer>
+      </div>
     </div>
   </body>
+  <script>
+    Reveal.initialize({
+      backgroundTransition: 'none',
+      transition: 'none',
+      progress: false
+    });
+  </script>
 </html>

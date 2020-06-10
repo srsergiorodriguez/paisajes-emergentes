@@ -1,19 +1,20 @@
 :root {
-  --cuadro: green;
-  --borde_cuadro: pink;
-  --rayitas: red;
+  /* SLIDERS */
+  --cuadro: #0d0110;
+  --borde_cuadro: #0e71ba;
+  --rayitas: #0e71ba;
   --riel: white;
-  --conexion: blue;
+  --conexion: #c91f12;
+  --rielb: #c91f12;
 
-  --fondo: yellow;
-  --general: greenyellow;
-  --interfaz: pink;
-  --texto: mintcream;
-  --cover: darkorange;
+  /* INTERFACES */
+  --interfaz: #0d0110;
+  --cover: #0d0110;
 
-  --boton: white;
-  --botonh: black;
-  --botona: red;
+  /* BOTONES */
+  --boton: #0e71ba;
+  --botona: #0d0110;
+  --botonb: #c91f12;
 }
 
 body {
@@ -21,47 +22,41 @@ body {
   margin:0;
   font-size: 1.2em;
   font-family: 'Oxygen', sans-serif;
-  background: var(--fondo);
 }
 
 button {
-  font-family:'Open Sans';
+  font-family: 'Oxygen', sans-serif;
   font-size:0.8em;
-  color:#111111;
+  color:var(--botona);
   background: var(--boton);
   box-shadow:none;
-  border:solid 1px;
+  border:solid 1px var(--botona);
   border-radius:5px;
   margin:5px 0px;
   padding: 5px;
 }
 
+.main_btn {
+  font-size: 1.5em;
+  border:solid var(--botona);
+}
+
 button:hover {
-  color:white;
-  background: var(--botonh);
+  color: var(--botona);
+  background: var(--botonb);
+  cursor: pointer;
 }
 
 button:active {
-  background: var(--botona);
+  background: var(--botonb);
 }
 
 .activebutton {
-  background: var(--botona);
+  background: var(--botonb);
 }
 
 button:focus {
   outline:none;
-}
-
-#tableros {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 3em;
-  padding: 0 3em;
-}
-
-#tableros img {
-  width: 100%;
 }
 
 #nh_explanation {
@@ -81,46 +76,12 @@ button:focus {
   height: 100%;
   background: var(--cover);
   text-align: center;
-  font-size: 2.5em;
+  font-size: 2em;
   padding: 1em;
 }
 
 #nh_cover {
   display: none;
-}
-
-.text {
-  background: var(--texto);
-}
-
-#general {
-  min-width: 550px;
-  max-width: 1100px;
-  margin: auto;
-  padding: 1em;
-  background: var(--general);
-}
-
-.general_header {
-  height: 50vw;
-}
-
-.general_header {
-  text-align: center;
-}
-
-.general_header h1 {
-  font-size: 2em;
-  font-weight: 700;
-  padding:1em 0em 0.3em 0em;
-  margin:0;
-}
-
-.general_header h2 {
-  font-weight: 400;
-  font-size: 1.1em;
-  padding:0;
-  margin:0;
 }
 
 #cover {
@@ -146,7 +107,6 @@ button:focus {
 }
 
 #nh_interface {
-  border: solid 1px lightgrey;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -161,14 +121,12 @@ button:focus {
 }
 
 #interval_interface {
-  border: solid 1px lightgrey;
   padding: 10px;
   display: flex;
   grid-template-columns: 1fr 1fr;
 }
 
 #interval_right {
-  border: solid 1px lightgrey;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -180,10 +138,12 @@ button:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
+  text-align:center;
 }
 
 .interval_container {
-  padding: .5em 0;
+  padding: 1em 0;
   display: grid;
-  grid-template-columns: 7fr 1fr;
+  grid-template-columns: 80% 20%;
+  font-size: 0.8em;
 }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paisajes Emergentes - Explora autómatas celulares compuestos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="nouislider.css" rel="stylesheet">
+    <script src="nouislider.min.js"></script>
+    <script src="gpu-browser.min.js"></script>
+    <script src="p5.min.js"></script>
+    <script src="nh_explanation.js"></script>
+    <script src="nh_interface.js"></script>
+    <script src="interval_interface.js"></script>
+  </head>
+  <body>
+    <div href="#intro" id="general">
+      <div id="intro" class="slide">
+        <h1>Paisajes emergentes</h1>
+        <h2>Crea autómatas celulares complejos</h2>
+        <button>Empezar</button>
+      </div>
+      <section class="content">
+        <section id="intro" class="text">
+          <div id="tableros">
+            <img src="ilustracion.png" alt=""/>
+            <img src="ilustracion1.png" alt=""/>
+            <img src="ilustracion2.png" alt=""/>
+          </div>
+          <div id="nh_explanation" class="interface"></div>
+          <div class="outer_container">
+            <div id="nh_cover" class="cover"><p>¡listo! Puedes continuar con la exploración...</p></div>
+            <div id="nh_interface" class="interface">
+              <div id="nh_canvas"></div>
+              <div id="nh_controls">
+                <div>
+                  <span>Cambia la herramienta por:</span>
+                  <button id="nh_drawerase">Borrador</button>
+                </div>
+                <div>
+                  <span id="nh_p">Escoge el vecindario que quieres editar:<br></span>
+                  <button class="nh_btn">Vecindario 0</button>
+                  <button class="nh_btn">Vecindario 1</button>
+                  <button class="nh_btn">Vecindario 2</button>
+                </div>
+                <div>
+                  <span>Una vez termines de dibujar los vecindarios...<br>clic aquí:</span>
+                  <button id="nh_finish" onclick="startIntervalInterface()">¡Terminé!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="outer_container">
+            <div id="interval_cover" class="cover"><p>Antes de definir los intervalos, primero define tu vecindario...</p></div>
+            <div id="interval_interface" class="interface">
+              <div id="interval_left">
+                <div id="interval_canvas"></div>
+              </div>
+              <div id=interval_right>
+                <div id="interval_top_controls">
+                  <button id="seed">Condiciones iniciales aleatorias</button>
+                  <button id="epoch">Nueva iteración</button>
+                  <button id="animate">Animar</button>
+                  <div>
+                    <button id="save_img">Guarda la imagen</button>
+                  </div>
+                </div>
+                <div id="sliders_right">
+                  <div id="life_sliders">
+                    <p>Intervalos vida:</p>
+                    <div class="rangeslider" id="intl1"></div>
+                    <div class="rangeslider" id="intl2"></div>
+                    <div class="rangeslider" id="intl3"></div>
+                  </div>
+                  <div id="death_sliders">
+                    <p>Intervalos muerte:</p>
+                    <div class="rangeslider" id="intd1"></div>
+                    <div class="rangeslider" id="intd2"></div>
+                    <div class="rangeslider" id="intd3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+      <footer class="footer">
+        <p>Sergio Rodríguez Gómez — 2020</p>
+      </footer>
+    </div>
+  </body>
+</html>

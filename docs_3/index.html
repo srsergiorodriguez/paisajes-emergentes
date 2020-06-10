@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Paisajes emergentes</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="reveal.css">
+    <link rel="stylesheet" href="../theme/black.css" id="theme">
+    <link href="style.css" rel="stylesheet">
+    <script src="p5.min.js"></script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <h2>Paisajes emergentes</h2>
+          <h3>Una exploración de autómatas celulares complejos</h3>
+          <button onclick="Reveal.next();">Avanzar</button>
+        </section>
+        <section>
+          <div class="outer_container">
+            <div id="nh_cover" class="cover"><p>¡listo! Puedes continuar con la exploración...</p></div>
+            <div id="nh_interface" class="interface">
+              <div id="nh_canvas"></div>
+              <div id="nh_controls">
+                <div>
+                  <span>Cambia la herramienta por:</span>
+                  <button id="nh_drawerase">Borrador</button>
+                </div>
+                <div>
+                  <span id="nh_p">Escoge el vecindario que quieres editar:<br></span>
+                  <button class="nh_btn">Vecindario 0</button>
+                  <button class="nh_btn">Vecindario 1</button>
+                  <button class="nh_btn">Vecindario 2</button>
+                </div>
+                <div>
+                  <span>Una vez termines de dibujar los vecindarios...<br>clic aquí:</span>
+                  <button id="nh_finish" onclick="startIntervalInterface()">¡Terminé!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div id="nh_explanation"></div>
+        </section>
+        <section>
+					<video src="https://static.slid.es/site/homepage/v1/homepage-video-editor.mp4" data-autoplay></video>
+        </section>
+        <section data-background-video="https://static.slid.es/site/homepage/v1/homepage-video-editor.mp4"></section>
+			</div>
+		</div>
+    <script src="reveal.js"></script>
+    <script src="nh_explanation.js"></script>
+    <script src="nh_interface.js"></script>
+		<script>
+      Reveal.initialize({
+        backgroundTransition: 'none',
+        transition: 'none',
+        progress: false
+      });
+		</script>
+	</body>
+</html>
