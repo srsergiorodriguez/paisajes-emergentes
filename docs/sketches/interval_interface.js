@@ -3,7 +3,7 @@ $ = (query) => document.querySelector(query);
 // GPU
 const gpu = new GPU();
 
-// Canvas settings
+// Configuración del canvas
 let cnv;
 const canvasSize = 400;
 let cellSize = 1;
@@ -11,11 +11,11 @@ let cellNum = canvasSize/cellSize;
 let loadState = "none";
 let drawing = false;
 
-// Neighborhoods settings
-let network; // contains the networkk state
-let density = 0.4; // density of black and white in the initial network
+// Configuración del vecindario
+let network; // contiene el estado de todo el tablero
+let density = 0.4; // densidad de puntos blancos y negros en la semilla
 
-//Epoch settings
+// Configuración del turno
 let animate = false;
 let epochinterval;
 
@@ -26,17 +26,15 @@ let intervalSlidersDeath = [];
 let intervalPDeath = [];
 
 // Intervals
-const intervalNum = 1; // number of intervals for each neighborhood
+const intervalNum = 1; // numero de intervalos para cada vecindario
 let intervalLife = [];
 let intervalDeath = [];
 
-let intnh;
+let intnh; // vecindario convertido de la interfaz de vecindarios
 
 function setup() {
-	cnv = createCanvas(canvasSize,canvasSize);
+  cnv = createCanvas(canvasSize,canvasSize);
   cnv.parent('#interval_canvas');
-  text("¡Define tu vecindario primero!");
-  //setTimeout(()=>{},1);
 }
 
 function startIntervalInterface() {
@@ -69,7 +67,7 @@ function populateIntervals() {
 }
 
 const randomNetworkGpu = gpu.createKernel(function(d) {
-	// Create a random network 
+	// Crea un tablero con una configuración aleatoria
 	let tempVal = 0;
 	if (Math.random(1)<d){tempVal=1} else {tempVal=0}
 	return tempVal;
@@ -107,7 +105,7 @@ function rightMenu() {
 }
 
 function displayCells() {
-	// Displays cells of current network in canvas
+	// Muestra los recuadros en el canvas
 	background(255);
 	let d = pixelDensity();
 	loadPixels();
@@ -131,7 +129,7 @@ function displayCells() {
 }
 
 const neighborsAliveGpu_nh1 = gpu.createKernel(function(nh_,nhl_,n_,cn_) {
-	// Returns the number of all alive neighbors for each cell in the network
+	// Devuelve el numero de vecinos vivos para cada recuadro
 	let sum = 0;
 	for (let i=0;i<nhl_;i++) {
 		let xn = this.thread.x+nh_[i][0]; 
@@ -152,7 +150,7 @@ const neighborsAliveGpu_nh1 = gpu.createKernel(function(nh_,nhl_,n_,cn_) {
 }).setOutput([cellNum,cellNum]);
 
 const neighborsAliveGpu_nh2 = gpu.createKernel(function(nh_,nhl_,n_,cn_) {
-	// Returns the number of all alive neighbors for each cell in the network
+	// Devuelve el numero de vecinos vivos para cada recuadro
 	let sum = 0;
 	for (let i=0;i<nhl_;i++) {
 		let xn = this.thread.x+nh_[i][0]; 
@@ -173,7 +171,7 @@ const neighborsAliveGpu_nh2 = gpu.createKernel(function(nh_,nhl_,n_,cn_) {
 }).setOutput([cellNum,cellNum]);
 
 const neighborsAliveGpu_nh3 = gpu.createKernel(function(nh_,nhl_,n_,cn_) {
-	// Returns the number of all alive neighbors for each cell in the network
+	// Devuelve el numero de vecinos vivos para cada recuadro
 	let sum = 0;
 	for (let i=0;i<nhl_;i++) {
 		let xn = this.thread.x+nh_[i][0]; 
@@ -194,7 +192,7 @@ const neighborsAliveGpu_nh3 = gpu.createKernel(function(nh_,nhl_,n_,cn_) {
 }).setOutput([cellNum,cellNum]);
 
 const applyRuleGpu = gpu.createKernel(function(n_,na_,inum_,il_,id_) {
-	// Applies a set interval rules to all elements in the network
+	// Aplica las reglas de los intervalos
 	let tempVal = n_[this.thread.y][this.thread.x];
 	for (let i=0;i<inum_;i++) {
 		if (il_[i][0]<=na_[this.thread.y][this.thread.x]
@@ -210,8 +208,7 @@ const applyRuleGpu = gpu.createKernel(function(n_,na_,inum_,il_,id_) {
 }).setOutput([cellNum,cellNum]);
 
 function newEpoch() {
-	// Creates a new generation of the network 
-	// based on the parameter rules and all the neighborhoods
+	// Crea un turno nuevo basado en los vecindarios y los intervalos
   const neighbors1 = neighborsAliveGpu_nh1(intnh[0],intnh[0].length,network,cellNum);
   const nextNetwork = applyRuleGpu(network,neighbors1,intervalNum,intervalLife[0],intervalDeath[0]);
   network = nextNetwork;
@@ -228,12 +225,13 @@ function newEpoch() {
 // HELPERS
 
 function sVal(s) {
-  // returns the values of a slider
+  // Devuelve los valores de los sliders
   const v = s.noUiSlider.get();
   return [parseInt(v[0]),parseInt(v[1])]
 }
 
 function parseNh(nh) {
+  // Convierte el vecindario de strings a arrays
   if (emptyArrays(nh)) {return [[[0,0]],[[0,0]],[[0,0]]]}
   const newNh = nh.map(nlist=>{
     const temp = nlist.map(elt=>{
@@ -246,6 +244,7 @@ function parseNh(nh) {
 }
 
 function emptyArrays(arr) {
+  // revisa si la array de arrays está vacía
   let answ = false;
   for (let i=0;i<arr.length;i++) {
     if (arr[i].length<=0) {
