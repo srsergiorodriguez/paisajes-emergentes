@@ -15,6 +15,17 @@
   --boton: #0e71ba;
   --botona: #0d0110;
   --botonb: #c91f12;
+
+  --celda: #0e71ba;
+  --vecindario: #c91f12;
+}
+
+.vspan {
+  color: var(--vecindario);
+}
+
+.cspan {
+  color: var(--celda);
 }
 
 body {

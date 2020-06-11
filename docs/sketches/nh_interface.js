@@ -12,17 +12,13 @@ const nh_interface = function(s) {
     cnv.parent('#nh_canvas');
     s.noStroke();
     const nhBtns = s.selectAll(".nh_btn");
-    for (let j=0;j<nhBtns.length;j++) {
-      nhBtns[j].removeClass("activebutton");
-    }
+    for (let j=0;j<nhBtns.length;j++) {nhBtns[j].removeClass("activebutton")}
     nhBtns[0].addClass("activebutton");
     for (let i=0;i<nhBtns.length;i++) {
       nh[i] = [];
       nhBtns[i].mousePressed(()=>{
         nhSelection=i;
-        for (let j=0;j<nhBtns.length;j++) {
-          nhBtns[j].removeClass("activebutton");
-        }
+        for (let j=0;j<nhBtns.length;j++) {nhBtns[j].removeClass("activebutton")}
         nhBtns[i].addClass("activebutton");
         s.displayCells();
       });
@@ -50,11 +46,11 @@ const nh_interface = function(s) {
 
   s.displayCells = () => {
     s.background(255);
-    s.fill(0);
+    s.fill('#0e71ba');
     s.rect(center*cellSize,center*cellSize,cellSize,cellSize);
     s.image(grid,0,0);
     for (let i=0;i<nh[nhSelection].length;i++) {
-      s.fill(150);
+      s.fill('#c91f12');
       const coor = s.split(nh[nhSelection][i],",").map(d=>s.int(d));
       const x = (coor[0]+center)*cellSize;
       const y = (coor[1]+center)*cellSize;
@@ -62,7 +58,10 @@ const nh_interface = function(s) {
     }
   }
 
-  s.mouseDragged = () => {
+  s.mouseDragged = () => {register()}
+  s.mousePressed = () => {register()}
+
+  function register() {
     const tempw = cnv.elt.getBoundingClientRect().width;
     const temph = cnv.elt.getBoundingClientRect().height;
     if (s.mouseX>=0&&s.mouseX<=tempw&&s.mouseY>=0&&s.mouseY<=temph) {
@@ -74,20 +73,6 @@ const nh_interface = function(s) {
       }
       s.displayCells();
     }
-  }
-
-  s.mousePressed = () => {
-    const tempw = cnv.elt.getBoundingClientRect().width;
-    const temph = cnv.elt.getBoundingClientRect().height;
-    if (s.mouseX>=0&&s.mouseX<=tempw&&s.mouseY>=0&&s.mouseY<=temph) {
-      const coor = (Math.floor(s.mouseX/(tempw/cells))-center)+","+(Math.floor(s.mouseY/(temph/cells))-center);
-      if (!nh[nhSelection].includes(coor) && draw) {
-        nh[nhSelection].push(coor);
-      } else if (nh[nhSelection].includes(coor) && !draw) {
-        nh[nhSelection].splice(nh[nhSelection].indexOf(coor),1);
-      }
-      s.displayCells();
-    } 
   }
 };
 const nhcanvas = new p5(nh_interface);

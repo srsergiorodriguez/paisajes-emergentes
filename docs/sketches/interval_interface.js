@@ -39,7 +39,8 @@ function setup() {
 
 function startIntervalInterface() {
   select('#interval_cover').remove();
-  select('#nh_cover').show();
+	select('#nh_cover').show();
+	Reveal.next();
   intnh = parseNh(nh);
   network  = randomNetworkGpu(density);
   populateIntervals();

@@ -26,15 +26,26 @@
   <body>
     <div class="reveal">
       <div class="slides">
-
-        <section><h1>Paisajes emergentes</h1></section>
-
+        <!-- TÍTULO -->
         <section>
           <img data-src="../images/titulo.gif"/>
           <button class="main_btn" onclick="Reveal.next();">Empezar</button>
         </section>
+
+        <!-- PRIMERA PARTE -->
+        <section data-background-video="../videos/parte1.mp4">
+          <!-- <video data-autoplay src="../videos/parte1.mp4"></video> -->
+          <div><div style="height:600px"></div><button onclick="Reveal.next();">Continuar</button></div>
+        </section>
+
         <!-- EXPLICACIÓN DE VECINDARIO -->
-        <section><div id="nh_explanation" class="interface"></div></section>
+        <section>
+          <div class="outer_container">
+            <p>Pasa por las <span class="cspan">celdas</span> y mira sus posibles <span class="vspan">vecindarios</span></p> 
+            <div id="nh_explanation" class="interface"></div>
+          </div>
+          <button onclick="Reveal.next();">Continuar</button>
+        </section>
 
         <!-- DEFINICIÓN DE VECINDARIO -->
         <section>
@@ -49,7 +60,7 @@
                 </div>
                 <div>
                   <br>
-                  <span id="nh_p">Escoge el vecindario que quieres editar:<br></span>
+                  <span id="nh_p">Escoge el <span class="vspan">vecindario</span> que quieres editar:<br></span>
                   <button class="nh_btn">Vecindario 0</button>
                   <button class="nh_btn">Vecindario 1</button>
                   <button class="nh_btn">Vecindario 2</button>
@@ -57,7 +68,7 @@
                 <div>
                   <br>
                   <span>Una vez termines de dibujar los vecindarios...<br>clic aquí:</span>
-                  <button id="nh_finish" onclick="startIntervalInterface()">¡Terminé!</button>
+                  <button id="nh_finish" onclick="startIntervalInterface()">Continuar</button>
                 </div>
               </div>
             </div>
@@ -98,6 +109,7 @@
               </div>
             </div>
           </div>
+          <button onclick="Reveal.next();">Continuar</button>
         </section>
       </div>
     </div>

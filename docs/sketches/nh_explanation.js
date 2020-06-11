@@ -12,7 +12,8 @@ const nh_explanation = function(s) {
         const tempsize = cnv.elt.getBoundingClientRect().width/div;
         const x = s.floor((s.mouseX)/tempsize);
         for (let j=-1;j<k-1;j++) {
-          s.fill(200);
+          const f = j===0?'#0e71ba':'#c91f12'; 
+          s.fill(f);
           s.rect((x*size)+(j*size),0,size,size);
         }
       });
