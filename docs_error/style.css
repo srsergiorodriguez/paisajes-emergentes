@@ -1,0 +1,165 @@
+:root {
+  /* SLIDERS */
+  --cuadro: #0d0110;
+  --borde_cuadro: #0e71ba;
+  --rayitas: #0e71ba;
+  --riel: white;
+  --conexion: #c91f12;
+  --rielb: #c91f12;
+
+  /* INTERFACES */
+  --interfaz: #0d0110;
+  --cover: #0d0110;
+
+  /* BOTONES */
+  --boton: #0e71ba;
+  --botona: #0d0110;
+  --botonb: #c91f12;
+
+  --celda: #0e71ba;
+  --vecindario: #c91f12;
+}
+
+.vspan {
+  color: var(--vecindario);
+}
+
+.cspan {
+  color: var(--celda);
+}
+
+body {
+  padding:0;
+  margin:0;
+  font-size: 1.2em;
+  font-family: 'Oxygen', sans-serif;
+}
+
+button {
+  font-family: 'Oxygen', sans-serif;
+  font-size:0.8em;
+  color:var(--botona);
+  background: var(--boton);
+  box-shadow:none;
+  border:solid 1px var(--botona);
+  border-radius:5px;
+  margin:5px 0px;
+  padding: 5px;
+}
+
+.main_btn {
+  font-size: 1.5em;
+  border:solid var(--botona);
+}
+
+button:hover {
+  color: var(--botona);
+  background: var(--botonb);
+  cursor: pointer;
+}
+
+button:active {
+  background: var(--botonb);
+}
+
+.activebutton {
+  background: var(--botonb);
+}
+
+button:focus {
+  outline:none;
+}
+
+#nh_explanation {
+  text-align: center;
+}
+
+.outer_container {
+  position: relative;
+}
+
+.cover {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: var(--cover);
+  text-align: center;
+  font-size: 2em;
+  padding: 1em;
+}
+
+#nh_cover {
+  display: none;
+}
+
+#cover {
+  padding: 1em;
+}
+
+.content_header h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+  padding:1em 0em 0.3em 0em;
+  margin:0;
+}
+
+.content_header h2 {
+  font-weight: 400;
+  font-size: 1.1em;
+  padding:0;
+  margin:0;
+}
+
+.interface {
+  background: var(--interfaz);
+}
+
+#nh_interface {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#nh_controls {
+  padding: 1em;
+}
+
+#nh_canvas:hover {
+  cursor: crosshair;
+}
+
+#interval_interface {
+  padding: 10px;
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+#interval_left {
+  padding: 10px;
+}
+
+#interval_right {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#sliders_right {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  text-align:center;
+}
+
+.interval_container {
+  padding: 1em 0;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  font-size: 0.8em;
+}
