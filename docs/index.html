@@ -99,40 +99,47 @@
 
         <!-- INTERACCIÓN DE INTERVALOS -->
         <section>
-          <div class="outer_container">
-            <div id="interval_cover" class="cover"><p>Antes de definir los intervalos, primero define tu vecindario...</p></div>
-            <div id="interval_interface" class="interface">
-              <div id="interval_left">
-                <div id="interval_canvas"></div>
-              </div>
-              <div id=interval_right>
-                <div id="interval_top_controls">
-                  <button id="seed">Nueva semilla</button>
-                  <button id="epoch">Turno</button>
-                  <button id="animate">Animar</button>
-                  <div>
-                    <button id="save_img">Guarda la imagen</button>
-                  </div>
+          <section>
+            <div class="outer_container">
+              <div id="interval_cover" class="cover"><p>Antes de definir los intervalos, primero define tu vecindario...</p></div>
+              <div id="interval_interface" class="interface">
+                <div id="interval_left">
+                  <div id="interval_canvas"></div>
                 </div>
-                <div id="sliders_right">
-                  <div id="life_sliders">
-                    <p>Intervalos vida:</p>
-                    <div class="rangeslider" id="intl1"></div>
-                    <div class="rangeslider" id="intl2"></div>
-                    <div class="rangeslider" id="intl3"></div>
+                <div id=interval_right>
+                  <div id="interval_top_controls">
+                    <button id="seed">Nueva semilla</button>
+                    <button id="epoch">Turno</button>
+                    <button id="animate">Animar</button>
+                    <div>
+                      <button id="save_img">Guarda la imagen</button>
+                    </div>
                   </div>
-                  <div id="death_sliders">
-                    <p>Intervalos muerte:</p>
-                    <div class="rangeslider" id="intd1"></div>
-                    <div class="rangeslider" id="intd2"></div>
-                    <div class="rangeslider" id="intd3"></div>
+                  <div id="sliders_right">
+                    <div id="life_sliders">
+                      <p>Intervalos vida:</p>
+                      <div class="rangeslider" id="intl1"></div>
+                      <div class="rangeslider" id="intl2"></div>
+                      <div class="rangeslider" id="intl3"></div>
+                    </div>
+                    <div id="death_sliders">
+                      <p>Intervalos muerte:</p>
+                      <div class="rangeslider" id="intd1"></div>
+                      <div class="rangeslider" id="intd2"></div>
+                      <div class="rangeslider" id="intd3"></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <button onclick="Reveal.prev();">Regresar</button>
-          <button onclick="Reveal.next();">Continuar</button>
+            <button onclick="Reveal.prev();">Regresar</button>
+            <button onclick="Reveal.down();">¡Ayuda!</button>
+            <button onclick="Reveal.next();">Continuar</button>
+          </section>
+          <section>
+            <video data-autoplay src="videos/tuto_s.mp4"></video>
+            <div><button onclick="Reveal.up();">Volver</button></div>
+          </section>
         </section>
 
         <!-- CONCLUSIONES -->
