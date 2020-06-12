@@ -3,25 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paisajes Emergentes - Explora autómatas celulares compuestos</title>
+    <title>Paisajes Emergentes</title>
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- ESTILO -->
     <link href="style.css" rel="stylesheet">
-    <link href="../libraries/nouislider.css" rel="stylesheet">
-    <link rel="stylesheet" href="../reveal/reveal.css">
-    <link rel="stylesheet" href="../reveal/theme/custom1.css" id="theme">
+    <link href="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/libraries/nouislider.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/reveal/reveal.css">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/reveal/theme/custom1.css" id="theme">
     
     <!-- LIBRERÍAS -->
-    <script src="../libraries/nouislider.min.js"></script>
-    <script src="../libraries/gpu-browser.min.js"></script>
-    <script src="../libraries/p5.min.js"></script>
-    <script src="../reveal/reveal.js"></script>
+    <script src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/libraries/nouislider.min.js"></script>
+    <script src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/libraries/gpu-browser.min.js"></script>
+    <script src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/libraries/p5.min.js"></script>
+    <script src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/reveal/reveal.js"></script>
 
     <!-- SKETCHES -->
-    <script src="../sketches/nh_explanation.js"></script>
-    <script src="../sketches/nh_interface.js"></script>
-    <script src="../sketches/interval_interface.js"></script>
+    <!-- <script src="../sketches/control.js"></script> -->
+    <script src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/sketches/nh_explanation.js"></script>
+    <script src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/sketches/nh_interface.js"></script>
+    <script src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/sketches/interval_interface.js"></script>
   </head>
   <body>
     <div class="reveal">
@@ -32,22 +33,38 @@
           <button class="main_btn" onclick="Reveal.next();">Empezar</button>
         </section>
 
-        <!-- PRIMERA PARTE -->
-        <section data-background-video="../videos/parte1.mp4">
-          <!-- <video data-autoplay src="../videos/parte1.mp4"></video> -->
-          <div><div style="height:600px"></div><button onclick="Reveal.next();">Continuar</button></div>
+        <!-- INTRODUCCIÓN -->
+        <section data-autoslide="40000" data-background-video="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/videos/intro_s.mp4">
+          <div><div style="height:600px"></div><button onclick="Reveal.prev();">Regresar</button><button onclick="Reveal.next();">Continuar</button></div>
         </section>
 
-        <!-- EXPLICACIÓN DE VECINDARIO -->
+        <!-- EXPLICACIÓN INICIAL -->
+        <section data-autoslide="101000" data-background-video="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/videos/expl_s.mp4">
+          <div><div style="height:600px"></div><button onclick="Reveal.prev();">Regresar</button><button onclick="Reveal.next();">Continuar</button></div>
+        </section>
+
+        <!-- INTERACCIÓN DE VECINDARIO -->
         <section>
           <div class="outer_container">
             <p>Pasa por las <span class="cspan">celdas</span> y mira sus posibles <span class="vspan">vecindarios</span></p> 
             <div id="nh_explanation" class="interface"></div>
           </div>
+          <button onclick="Reveal.prev();">Regresar</button>
           <button onclick="Reveal.next();">Continuar</button>
         </section>
 
-        <!-- DEFINICIÓN DE VECINDARIO -->
+        <!-- EXPLICACIÓN DE VECINDARIO -->
+        <section data-autoslide="36000" data-background-video="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/videos/vecin1_s.mp4">
+          <div><div style="height:600px"></div><button onclick="Reveal.prev();">Regresar</button><button onclick="Reveal.next();">Continuar</button></div>
+        </section>
+
+        <!-- EXPLICACIÓN DIBUJO DE VECINDARIO -->
+        <section data-autoslide="21000">
+          <video data-autoplay src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/videos/vecin2_s.mp4"></video>
+          <div><button onclick="Reveal.prev();">Regresar</button><button onclick="Reveal.next();">Continuar</button></div>
+        </section>
+
+        <!-- INTERACCIÓN DIBUJO DE VECINDARIO -->
         <section>
           <div class="outer_container">
             <div id="nh_cover" class="cover"><p>¡listo! Puedes continuar con la exploración...</p></div>
@@ -69,13 +86,21 @@
                   <br>
                   <span>Una vez termines de dibujar los vecindarios...<br>clic aquí:</span>
                   <button id="nh_finish" onclick="startIntervalInterface()">Continuar</button>
+                  <span><br>o:</span>
+                  <button onclick="Reveal.prev();">Regresar</button>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- DEFINICIÓN DE INTERVALOS -->
+        <!-- EXPLICACIÓN INTERVALOS -->
+        <section data-autoslide="40000">
+          <video data-autoplay src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/videos/interval_s.mp4"></video>
+          <div><button onclick="Reveal.prev();">Regresar</button><button onclick="Reveal.next();">Continuar</button></div>
+        </section>
+
+        <!-- INTERACCIÓN DE INTERVALOS -->
         <section>
           <div class="outer_container">
             <div id="interval_cover" class="cover"><p>Antes de definir los intervalos, primero define tu vecindario...</p></div>
@@ -109,16 +134,30 @@
               </div>
             </div>
           </div>
+          <button onclick="Reveal.prev();">Regresar</button>
           <button onclick="Reveal.next();">Continuar</button>
+        </section>
+
+        <!-- CONCLUSIONES -->
+        <section data-autoslide="147000">
+          <video data-autoplay src="https://raw.githubusercontent.com/srsergiorodriguez/paisajes-emergentes/master/docs/videos/concl_s.mp4"></video>
+          <div><button onclick="Reveal.prev();">Regresar</button><button onclick="Reveal.next();">Continuar</button></div>
+        </section>
+
+        <!-- CRÉDITOS -->
+        <section>
+          <h1>Sergio Rodríguez Gómez — 2020</h1>
+          <button onclick="Reveal.slide(0,0,0);">Volver al inicio</button>
         </section>
       </div>
     </div>
   </body>
   <script>
     Reveal.initialize({
-      backgroundTransition: 'none',
-      transition: 'none',
-      progress: false
+      backgroundTransition: 'fade',
+      transition: 'fade',
+      progress: false,
+      controls: false
     });
   </script>
 </html>

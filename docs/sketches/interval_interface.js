@@ -41,7 +41,7 @@ function startIntervalInterface() {
   select('#interval_cover').remove();
 	select('#nh_cover').show();
 	Reveal.next();
-  intnh = parseNh(nh);
+	intnh = parseNh(nh);
   network  = randomNetworkGpu(density);
   populateIntervals();
   displayCells();
@@ -233,7 +233,7 @@ function sVal(s) {
 
 function parseNh(nh) {
   // Convierte el vecindario de strings a arrays
-  if (emptyArrays(nh)) {return [[[0,0]],[[0,0]],[[0,0]]]}
+  if (emptyArrays(nh)) {return [[[0,-1],[-1,0],[1,0],[0,1],[0,0]],[[-1,-1],[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[0,-2],[-2,0],[2,0],[0,2],[0,0]],[[1,1],[-1,-1]]]}
   const newNh = nh.map(nlist=>{
     const temp = nlist.map(elt=>{
       const arr = elt.split(",")

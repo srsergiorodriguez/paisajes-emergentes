@@ -135,6 +135,11 @@ button:focus {
   padding: 10px;
   display: flex;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+#interval_left {
+  padding: 10px;
 }
 
 #interval_right {
